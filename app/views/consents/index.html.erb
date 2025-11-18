@@ -1,0 +1,41 @@
+<div class="box"> 
+<h1>Gerenciamento de - <%= @user.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Finalidade</th>
+      <th>Status</th>
+      <th>Concedido em</th>
+      <th>Revogado em</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @consents.each do |consent| %>
+      <tr>
+        <td><%= consent.purpose.humanize %></td>
+        <td><%= consent.status.humanize %></td>
+        <td><%= consent.granted_at&.strftime("%Y-%m-%d %H:%M") || "N/A" %></td>
+        <td><%= consent.revoked_at&.strftime("%Y-%m-%d %H:%M") || "N/A" %></td>
+        <td>
+          <% if consent.granted? %>
+            <%= button_to "Revogar",
+                  update_user_consent_path(@user, consent.purpose, action_type: 'revoke'),
+                  method: :patch,
+                  class: "btn btn-danger" %>
+          <% else %>
+            <%= button_to "Conceder",
+                  update_user_consent_path(@user, consent.purpose, action_type: 'grant'),
+                  method: :patch,
+                  class: "btn btn-success" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "Voltar", users_path %>
+</div>

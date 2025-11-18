@@ -1,0 +1,33 @@
+<div class="box">
+  <h1>Criar Usuário</h1>
+
+  <%= form_with model: @user, local: true, html: {class: "form-main"} do |form| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+       <h2><%= pluralize(@user.errors.count, "erro") %> proibiu o salvamento:</h2>
+       <ul>
+         <% @user.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name, "Nome" %>
+      <%= form.text_field :name, class: "form-input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :email, "E-mail" %>
+      <%= form.email_field :email, class: "form-input" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Criar Usuário", class: "primary-btn" %>
+    </div>
+  <% end %>
+
+  <br>
+  <%= link_to "Lista de usuários", users_path %>
+</div>
