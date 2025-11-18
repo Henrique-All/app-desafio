@@ -13,7 +13,7 @@ Pequeno sistema em Ruby on Rails para gerenciar consentimentos por finalidade (m
 
 1. Clone o repositório ou copie os arquivos para uma pasta
 ```bash
-git clone <SEU_REPO_URL>
+git clone https://github.com/Henrique-All/app-desafio
 cd app-desafio
 ```
 
@@ -70,16 +70,5 @@ bundle exec rails server -b 0.0.0.0
 - Testes automatizados
 - Docker e deploy
 
-## Commit e push
-```bash
-git init
-git add .
-git commit -m "Implementação inicial: sistema de consentimento (LGPD)"
-git remote add origin git@github.com:SEU_USUARIO/app-desafio.git
-git branch -M main
-git push -u origin main
-```
-
----
 
 Obrigado!
